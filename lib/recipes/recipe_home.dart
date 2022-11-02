@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meal_app/recipes/create_recipe.dart';
+import 'package:meal_app/recipes/recipe_tile.dart';
+import 'package:meal_app/storage_service.dart';
 
-class RecipeHome extends StatelessWidget {
+class RecipeHome extends ConsumerWidget {
   const RecipeHome({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context, ref) {
+    final storageService = ref.watch(storageServiceProvider);
+    final recipes = storageService.getRecipes();
+
     return Stack(
       alignment: Alignment.center,
       children: [
         ListView(
-          children: const [
-            Text('Recipe Page'),
+          children: [
+            for (final r in recipes) RecipeTile(recipe: r),
           ],
         ),
         Positioned(

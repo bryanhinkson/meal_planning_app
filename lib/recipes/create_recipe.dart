@@ -9,13 +9,19 @@ class CreateRecipe extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Create A New Recipe'),
       ),
-      body: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        child: const Text(
-          'Save Recipe',
-        ),
+      body: Column(
+        children: [
+          // TODO: implement form to create recipe
+          // TODO: Implement storage device to persist recipes
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text(
+              'Save Recipe',
+            ),
+          ),
+        ],
       ),
     );
   }
